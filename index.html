@@ -4,11 +4,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>dev.js, dataops & devops patterns - fabien antoine</title>
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/white.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
@@ -21,12 +21,33 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+		<style>
+			.container{
+				display: flex;
+			}
+			.col{
+				flex: 1;
+				padding: 8px;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section data-markdown>
+					<textarea data-template>
+						### dev.js, dataops & devops
+
+						<img height="100" style="background-color:white;border : 0;box-shadow: none;" data-src="img/matchID-logo.svg" alt="matchID">
+
+						les prétextes et la génèse de
+						[deces.matchid.io](https://deces.matchid.io)
+
+						<small>fabien.antoine@m4x.org</small>
+
+					</textarea>
+				</section>
+
 			</div>
 		</div>
 
