@@ -29,6 +29,18 @@
 				flex: 1;
 				padding: 8px;
 			}
+			ul {
+				list-style: none!important; /* Remove default bullets */
+			}
+
+			ul li::before {
+				content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+				color: red; /* Change the color */
+				font-weight: bold; /* If you want it to be bold */
+				display: inline-block; /* Needed to add space between the bullet and the text */
+				width: 1em; /* Also needed for space (tweak if needed) */
+				margin-left: -1em; /* Also needed for space (tweak if needed) */
+			}
 		</style>
 	</head>
 	<body>
@@ -46,6 +58,49 @@
 						<small>fabien.antoine@m4x.org</small>
 
 					</textarea>
+				</section>
+				<section title="objectif">
+					<section data-markdown data-background-iframe="https://deces.matchid.io/">
+						<textarea data-template>
+							## L'objectif
+
+							Publier un moteur de recherche des personnes décédées
+
+							<img width="100%" style="background-color:white;border : 0;box-shadow: none;" data-src="img/moteur_deces.png" alt="deces.matchid.io">
+
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## L'opportunité
+
+							<div class="container">
+								<div class="col">
+									début 2017...<br/>
+									<img height="150px" style="background-color:white;border : 0;box-shadow: none;" data-src="img/logo_mi.png" alt="logo ministère de l'Intérieur">
+									<br/>
+									<small>au "MI", le projet matchID réalise en POC un moteur de recherche des décès avec le fichier INSEE, alors fermé</small>
+								</div>
+								<div class="col">
+									... fin 2019<br/>
+									<img height="150px" style="background-color:white;border : 0;box-shadow: none;" data-src="img/logo_insee.svg" alt="logo Insee">
+									<br/>
+									<small>l'INSEE publie l'ensemble des 25 millions d'enregistrements de décès depuis 1970 <a href="https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees/)">data.gouv</a></small>
+								</div>
+							</div>
+
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							## Les envies
+							- valoriser l'effort d'ouverture de l'INSEE
+							- capitaliser sur l'expérience du ministère
+							- offrir un service minimal gratuit
+							- découvrir d'autres framework .js
+							- évaluer plusieurs IaaS de la French Tech
+						</textarea>
+					</section>
 				</section>
 
 			</div>
