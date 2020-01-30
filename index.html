@@ -513,7 +513,52 @@ make dev FILES_TO_PROCESS=deces-1970.txt.gz
 									</small>
 								</textarea>
 						</section>
-
+						<section title="dataops" data-markdown>
+							<textarea data-template>
+								## Dataops avec matchID
+								<div class="container">
+									<div class="col left">
+										<small>
+											<p>
+												Le traitement via l'interface web matchID est pratique pour développer.
+											</p>
+											<p>
+												Pour automatiser, il y a un mode cli - ainsi, pour "cliquer" sur
+												le bouton "Lancer":
+											</p>
+												<small><code>
+												make recipe-run FILES_TO_PROCEED=deces-1970.txt.gz
+												</code></small>
+											<p>
+												Pour configurer la machine, installer le minimum (sans IHM) lance matchID,
+												sauvegarde l'index Elasticsearch sur S3 :
+											</p>
+											<small><code style="margin-top:32px!important">
+												make all FILES_TO_PROCEED=deces-1970.txt.gz
+											</code></small><br/>
+											<p>
+											</p>
+										</small>
+									</div>
+									<div class="col left">
+										<small>
+											<p>
+												Pour commander une machine sur une machine sur Scaleway, y déploie matchID,
+												lance le traitement complet (4h30 à 8h selon l'instance), sauvegarde
+												sur S3, et décommissionne la machine.
+											</p>
+											<small><code>
+												make remote-all CLOUD=SCW
+											</code></small><br/>
+											<p>
+												Nous avons testé ce process avec l'OpenStack d'OVH (<code>CLOUD=OS</code>) et l'EC2
+												TinaOS d'Outscale (<code>CLOUD=EC2</code>), en utilisant la cli <code>aws</code>.
+											</p>
+										</small>
+									</div>
+								</div>
+							</textarea>
+						</section>
 					</section>
 
 			</div>
