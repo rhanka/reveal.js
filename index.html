@@ -297,6 +297,46 @@ DOUAT*MARIE-SYLVIA MARTINE/   21970070801004AMBERIEU-EN-BUGEY   1970070801053457
 							</div>
 						</textarea>
 					</section>
+					<section title="s3 et data" data-markdown>
+							<textarea data-template>
+								## S3 et data
+								<div class="container higher">
+									<div class="col left">
+										<small>
+											<p>
+													On y accède bien sûr via une IHM facile en drag'n drop chez ls fournisseurs, mais on se rabat sur
+													un NextCloud si c'est l'objecitif n'est pas de soulever le capôt. Tous les langages orienté
+													offrent un support avancé aux API S3.
+											</p>
+											<p>
+													Et bien sur, toutes solutions de data le supportent: Kafka, Airflow, Talend, Dataiku, Hadoop (HDFS over S3)
+													... et maintenant 🤩 matchID 🤩.
+											</p>
+											<p>		Donc, aujourd'hui, <b>la donnée à froid</b>, c'est en S3 !</p>
+										</small>
+									</div>
+									<div class="col left">
+										<small>
+											<p>
+												L'accès par API stockage objet vient avec ses méthode d'authentification. E.g chez Scaleway:
+												<small><code><a href="https://www.scaleway.com/en/docs/s3-object-storage-api/">
+													https://www.scaleway.com/en/docs/s3-object-storage-api/</a></code></small>
+											</p>
+											<p>
+												Pour poser (après <a href="https://www.scaleway.com/en/docs/object-storage-with-aws-cli/">configuration</a>) les data de l'INSEE sur le stockage S3, il faut la cli <code>aws</code>:
+												<pre class="higher-24"><code>
+	foreach file in (deces-*);do\
+			aws s3 cp $file s3://your-bucket/$file;
+	done
+												</code></pre>
+											</p>
+											<p class="higher-24"> Simple non ?
+											</p>
+										</small>
+									</div>
+								</div>
+							</textarea>
+					</section>
 
 				</section>
 
