@@ -346,7 +346,7 @@ DOUAT*MARIE-SYLVIA MARTINE/   21970070801004AMBERIEU-EN-BUGEY   1970070801053457
 										<a href=https://fichier-des-personnes-decedees.s3.fr-par.scw.cloud/">ici en accès public S3</a>
 									</p>
 									<p>
-										On les récupère ainsi sans compte:
+										On les récupère ainsi sans compte Scaleway:
 										<pre class="center"><code>
 						bucket=https://fichier-des-personnes-decedees.s3.fr-par.scw.cloud/;\
 						files=$(curl -s ${bucket}\
@@ -359,11 +359,52 @@ DOUAT*MARIE-SYLVIA MARTINE/   21970070801004AMBERIEU-EN-BUGEY   1970070801053457
 									</p>
 									<p>
 										Ce qui me permet de poursuivre la pub de <code>jq</code> avec son dérivatif xml
-										<a href="https://github.com/jeffbr13/xq"><code>xq</code>, pour parser les chemins xml en cli.
-											Il y a le même en yaml (<code>
-											<a href="https://github.com/kislyuk/yq">yq</a></code>), et même en html (<code>
-											<a href="https://github.com/rbwinslow/hq">hq</a></code>)
+										<a href="https://github.com/jeffbr13/xq"><code>xq</code></a>, pour parser les chemins xml en cli.
+											Il y a le même en yaml (<a href="https://github.com/kislyuk/yq"><code>yq</code></a>), et même en html
+											(<code><a href="https://github.com/rbwinslow/hq">hq</a></code>)
 									</p>
+							</small>
+						</textarea>
+					</section>
+					<section title="plus sur le S3" data-markdown>
+							<textarea data-template>
+								## Quelques retour sur le S3
+								<div class="container center">
+								<div class="col left">
+									<small>
+										<p>
+											Il y a S3 et S3... Ainsi chez Scaleway toutes les méthodes de la cli <code>aws</code> ne
+											sont pas implémentées, il y a même une <a href="https://www.scaleway.com/en/docs/s3-object-storage-api/">roadmap</a>.
+										</p>
+										<p>
+											A noter notamment :
+											<ul>
+												<li>Les options de chiffrement, nombreuses chez AWS (arrive Q1 2020 chez Scaleway</li>
+												<li>La réplication de bucket</li>
+												<li>La gestion de tokens temporaires, scopés qui peut sécuriser l'automatisation (possible
+													dans Swift d'OpenStack ou AWS
+												</li>
+											</ul>
+										</p>
+									</small>
+								</div>
+								<div class="col left">
+									<small>
+										<p>
+											La tarification est importante à analyser, les points d'attention:
+											<ul>
+												<li>un quota gratuit (75Go chez Scaleway)</li>
+												<li>le tarif initial Go est attractif (~ 0.01 mensuel)</li>
+												<li>on paye le tarif sortant (hors du fournisseur)s</li>
+												<li>réplicats: plus de résilience = plus de réplicats = plus cher</li>
+											</ul>
+										</p>
+									</small>
+								</div>
+							</div>
+							<small>
+								Acheter son object storage doit être pris en compte. Cela dit pour le projet présenté,
+								ma facture est toujours à 0€ chez Scaleway:<br/>1Go pour les données sources, 8.8Go pour la sauvegarde de l'index
 							</small>
 						</textarea>
 					</section>
