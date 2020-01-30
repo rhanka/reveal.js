@@ -494,6 +494,25 @@ make dev FILES_TO_PROCESS=deces-1970.txt.gz
 									</small>
 								</textarea>
 						</section>
+						<section title="indexation" data-markdown>
+								<textarea data-template>
+									## Indexation Elasticsearch
+									<a target="_blank" href="http://localhost:8081/matchID/projects/personnes-decedees_search/datasets/personnes-decedees_index">
+									<img width="100%" style="border:0;box-shadow: none;" data-src="img/matchID-index.png" alt="matchid index"></a>
+									<small class="higher-24"><small>Cliquez sur l'image pour visualiser les données</small></small>
+
+									<small class="left higher">
+										L'indexation Elasticsearch est une opération peu intuitive:
+										<ul>
+											<li>matchID facilite l'indexation avec l'automatisation de la création du mapping</li>
+											<li>plusieurs colonnes avec des indexations différenciées sont créées</li>
+											<li>le edge ngram est utilisé pour tokenizer à l'indexation mais pas à la recherche (pour l'autocomplete)</li>
+											<li>l'indexation floue "auto" est utilisée (distance de Levensthein à 2 pour les noms longs, 1 pour les noms courts, 0 pour les très courts</li>
+											<li>la date de naissance et de décès sont également accessibles en recherche floue</li>
+										</ul>
+									</small>
+								</textarea>
+						</section>
 
 					</section>
 
