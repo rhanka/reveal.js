@@ -22,12 +22,22 @@
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 		<style>
-			.container{
+			.container {
 				display: flex;
+				align-items: center;
+			}
+			.higher {
+				margin-top:-64px;
 			}
 			.col{
 				flex: 1;
-				padding: 8px;
+				padding: 16px;
+			}
+			.justify {
+				text-align: justify;
+			}
+			.left {
+				text-align: left;
 			}
 			ul {
 				list-style: none!important; /* Remove default bullets */
@@ -46,7 +56,7 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section data-markdown>
+				<section title="start" data-markdown>
 					<textarea data-template>
 						### dev.js, dataops & devops
 
@@ -59,6 +69,7 @@
 
 					</textarea>
 				</section>
+
 				<section title="objectif">
 					<section data-markdown data-background-iframe="https://deces.matchid.io/">
 						<textarea data-template>
@@ -100,6 +111,126 @@
 							- découvrir d'autres framework .js
 							- évaluer plusieurs IaaS de la French Tech
 						</textarea>
+					</section>
+				</section>
+
+				<section title="dataprep">
+						<section data-markdown data-background-iframe="https://deces.matchid.io/">
+							<textarea data-template>
+								## Data source
+
+								API data.gouv et stockage cloud S3
+
+							</textarea>
+						</section>
+						<section data-markdown>
+							<textarea data-template>
+								## Les données INSEE
+
+								<small>
+									<ul>
+										<li>nom, prénom(s)</li>
+										<li>date/lieu de naissance/décès</li>
+										<li>n° d'acte de décès</li>
+										<br/>
+										<li>25 millions d'enregistrements</li>
+										<li>49 fichiers</li>
+										<li>environ 620k décès/an aujourd'hui</li>
+										<br/>
+										<li><i>fixed width file</i> (champs fixes) </li>
+										<li><i>~ascii (sauf quelques lignes...) </li>
+									</ul>
+								</small>
+								<small><pre><code>
+DUCRET*MARIE ANTOINETTE/    [...] 21922010901004AMBERIEU-EN-BUGEY [...] 19701210014216
+GRANGEON*ERIC JEAN REMY/    [...] 11969032901004AMBERIEU-BUGEY [...] 19700425693831059
+VELLET*PHILIPPE/            [...] 11970020101004AMBERIEU-EN-BUGEY [...] 197002030100412
+PRESSAVIN*LYDIE/            [...] 21970040601004AMBERIEU-EN-BUGEY [...] 197004060100433
+DOUAT*MARIE-SYLVIA MARTINE/ [...] 21970070801004AMBERIEU-EN-BUGEY [...] 1970070801053457
+								</code></pre></small>
+
+								🤮 🤮 🤮
+
+								<small><small>(merci quand même à l'INSEE : c'est bien moche mais très carré)</small></small>
+
+							</textarea>
+						</section>
+						<section data-markdown>
+							<textarea data-template>
+								## [DATA.GOUV](https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees)
+								<div class="container">
+										<div class="col">
+												<small>
+													data.gouv c'est une plateforme de publication de données ouvertes
+													- en quelques chiffres :
+												</small><br/>
+												<img style="background-color:white;border : 0;box-shadow: none;" data-src="img/data_gouv_chiffres.png" alt="chiffres data.gouv">
+												<br/>
+											</div>
+										<div class="col">
+											<small>on y retrouve les 49 fichiers INSEE, faciles d'accès, et quelques réutilisations</small>
+											<a href="https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees">
+												<img width="350px" style="background-color:white;border : 0;box-shadow: none;" data-src="img/data_gouv.png" alt="site data.gouv">
+											</a>
+										</div>
+									</div>
+							</textarea>
+						</section>
+
+					<section data-markdown>
+							<textarea data-template>
+								## [L'API data.gouv](https://doc.data.gouv.fr/api/reference/#/)
+								<small></small>
+								<div class="container higher">
+									<div class="col left">
+										<small>
+											<p>
+												Télécharger 49 fichier à la main, c'est simple mais
+												peu réaliste pour des opérations récurrentes.
+											</p>
+											<p>
+												Heureusement, l'API de data.gouv existe, très lisible et documentée
+												en Swagger via FlaskRestPlus :<br/>
+												<small><a href="https://doc.data.gouv.fr/api/reference/#/"><code>
+													https://doc.data.gouv.fr/api/reference/#/</code></a></small>
+											</p>
+											<p>
+												Le endpoint pour notre dataset est : <br>
+												<small>
+													<a href="https://www.data.gouv.fr/api/1/datasets/fichier-des-personnes-decedees">
+													<code "is-small">https://www.data.gouv.fr/api/1/datasets/fichier-des-personnes-decedees</code>
+													</a>
+												</small>
+											</p>
+											<p>
+													Le schéma du JSON est épais, le chemin qui nous intéresse est <code>resources.url</code>.
+											</p>
+										</small>
+									</div>
+									<div class="col left">
+										<small>
+											<p>
+												Pour récupérer les 49 fichiers en shell :
+											</p>
+										<small><code>
+												curl -s https://www.data.gouv.fr/api/1/datasets/fichier-des-personnes-decedees/ | jq '.resources[].url' |	sed 's/^/curl -s /;s:/\(deces-.*\)":/\1" | gzip > \1.gz:' | sh
+										</code></small>
+										<p>
+											N'hésitez pas à décomposer la commande pour les curieux
+										</p>
+										<p>
+											Vous noterez l'utilisation de
+											<a href="https://stedolan.github.io/jq/"><code>jq</code></a>. Cet outil est
+											devenu incontournable à l'ère des API, pour ceux qui font encore du shell.
+										</p>
+										<p>
+											Pour les habitués de langage plus évolués Python ou Node, la récupération
+											d'une API Rest est aisée.
+										</p>
+									</small>
+								</div>
+							</textarea>
+						</section>
 					</section>
 				</section>
 
