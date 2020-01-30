@@ -516,15 +516,19 @@ make dev FILES_TO_PROCESS=deces-1970.txt.gz
 						<section title="dataops" data-markdown>
 							<textarea data-template>
 								## Dataops avec matchID
-								<div class="container">
+								<div class="container higher">
 									<div class="col left">
 										<small>
 											<p>
 												Le traitement via l'interface web matchID est pratique pour développer.
 											</p>
 											<p>
-												Pour automatiser, il y a un mode cli - ainsi, pour "cliquer" sur
-												le bouton "Lancer":
+												Mais le traitement complet est long, et pour améliorer l'UI, la phase de dev
+												demande au dataops une nouvelle mouture. A forces de cycles, on automatise.
+											</p>
+											<p>
+												Pour automatiser, il y a un mode cli (qui utilise l'API Rest de matchID).
+												Ainsi, pour "cliquer" sur le bouton "Lancer":
 											</p>
 												<small><code>
 												make recipe-run FILES_TO_PROCEED=deces-1970.txt.gz
@@ -554,9 +558,26 @@ make dev FILES_TO_PROCESS=deces-1970.txt.gz
 												Nous avons testé ce process avec l'OpenStack d'OVH (<code>CLOUD=OS</code>) et l'EC2
 												TinaOS d'Outscale (<code>CLOUD=EC2</code>), en utilisant la cli <code>aws</code>.
 											</p>
+											<p>
+												Nous détaillerons plus tard le retour sur les 3 clouders, mais tous
+												sont très satisfaisant avec des niveaux de sécurité différents. Mon
+												portefeuille étant l'arbitre et le sujet traité full open, je suis
+												resté chez Scaleway.
+											</p>
 										</small>
 									</div>
 								</div>
+							</textarea>
+						</section>
+						<section title="dataops" data-markdown>
+							<textarea data-template>
+								## A retenir
+								- S3 rend possible le déport du compute data d'un IaaS à un autre sans aucune adaptation
+								- un projet dataops doit être géré en code du traitement jusqu'au déploiement cloud
+								- <img height="50px" style="margin-bottom:-10px;border:0;box-shadow: none;" data-src="img/matchID-logo.svg" alt="matchid logo"> dispose
+								maintenant du connecteur S3 et pilotage multi-IaaS qui le rendent Cloud hybride compliant
+
+
 							</textarea>
 						</section>
 					</section>
