@@ -473,6 +473,27 @@ make dev FILES_TO_PROCESS=deces-1970.txt.gz
 									</small>
 								</textarea>
 						</section>
+						<section title="dataprep" data-markdown>
+								<textarea data-template>
+									## Dataprep pour indexation
+									<small class="left">
+											Les traitements sont pensés faciliter la recherche par indexation:
+											<ul>
+												<li>les données sont normalisées en ascii (il y a quelques erreurs d'encodage dans les fichiers INSEE</li>
+												<li>le libellé de commune de décès (ou pays) est récupéré via le référentiel INSEE</li>
+												<li>idem pour le pays de naissance et de décès</li>
+												<li>l'historique de commune est utilisée pour les variantes de libellés de communes</li>
+											</ul>
+										</small>
+									<a class="higher-24" target="_blank" href="http://localhost:8081/matchID/projects/personnes-decedees_search/recipes/dataprep_personnes-dedecees_search">
+									<img width="100%" style="border:0;box-shadow: none;" data-src="img/matchID-dataprep.png" alt="matchid datapre"></a>
+
+									<small class="left">
+										Cliquez sur l'image ci-dessus pour vous rendre sur la recette, et appuyez sur le bouton "Lancer"
+										pour indexer l'année 1970 (45 secondes environ).
+									</small>
+								</textarea>
+						</section>
 
 					</section>
 
