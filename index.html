@@ -337,7 +337,36 @@ DOUAT*MARIE-SYLVIA MARTINE/   21970070801004AMBERIEU-EN-BUGEY   1970070801053457
 								</div>
 							</textarea>
 					</section>
-
+					<section title="recup sur s3" data-markdown>
+							<textarea data-template>
+								## S3 récupérer les données
+								<small>
+									<p>
+										Du coup, les données de data.gouv sont dupliquées
+										<a href=https://fichier-des-personnes-decedees.s3.fr-par.scw.cloud/">ici en accès public S3</a>
+									</p>
+									<p>
+										On les récupère ainsi sans compte:
+										<pre class="center"><code>
+						bucket=https://fichier-des-personnes-decedees.s3.fr-par.scw.cloud/;\
+						files=$(curl -s ${bucket}\
+							| xq -r '.ListBucketResult.Contents[].Key | select(contains("deces"))');\
+						for file in $files; do\
+							[ ! -f $file ] && (curl -s ${bucket}/$file > $file ) && \
+							echo $file downloaded;\
+						done
+										</code></pre>
+									</p>
+									<p>
+										Ce qui me permet de poursuivre la pub de <code>jq</code> avec son dérivatif xml
+										<a href="https://github.com/jeffbr13/xq"><code>xq</code>, pour parser les chemins xml en cli.
+											Il y a le même en yaml (<code>
+											<a href="https://github.com/kislyuk/yq">yq</a></code>), et même en html (<code>
+											<a href="https://github.com/rbwinslow/hq">hq</a></code>)
+									</p>
+							</small>
+						</textarea>
+					</section>
 				</section>
 
 			</div>
