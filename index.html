@@ -457,6 +457,22 @@ make dev FILES_TO_PROCESS=deces-1970.txt.gz
 								</small>
 							</textarea>
 						</section>
+						<section title="source INSEE" data-markdown>
+								<textarea data-template>
+									## DONNEES INSEE sur matchID
+									<a target="blank" href="http://localhost:8081/matchID/projects/personnes-decedees_search/datasets/personnes-decedees_src">
+									<img width="100%" style="border:0;box-shadow: none;" data-src="img/matchID-fwf.png" alt="matchid source"></a>
+									<small>
+										Quelques points à noter:
+										<ul>
+											<li>la déclaration de dataset dans matchID est faite en <a href="https://yaml.org/">Yaml</a></li>
+											<li>les données sont lues directement depuis le stockage S3</li>
+											<li>les champs fixes sont déclarés dans le champ <code>widths</code></li>
+											<li>jouez avec les filtres qui permettent de filtrer les lignes et les colonnes</li>
+										</ul>
+									</small>
+								</textarea>
+						</section>
 
 					</section>
 
