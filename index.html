@@ -24,10 +24,16 @@
 		<style>
 			.container {
 				display: flex;
+			}
+			.center {
 				align-items: center;
 			}
-			.higher {
-				margin-top:-64px;
+			.higher,
+			.higher-48 {
+				margin-top:-48px!important;
+			}
+			.higher-24 {
+				margin-top:-24px!important;
 			}
 			.col{
 				flex: 1;
@@ -51,6 +57,19 @@
 				width: 1em; /* Also needed for space (tweak if needed) */
 				margin-left: -1em; /* Also needed for space (tweak if needed) */
 			}
+			pre {
+				border : 0!important;
+				margin: 0px!important;
+				padding: 0px!important;
+				box-shadow: none!important;
+				width:100%!important;
+			}
+			pre code {
+				padding: 0px!important;
+			}
+			code {
+				font-size: 0.95em!important;
+			}
 		</style>
 	</head>
 	<body>
@@ -60,7 +79,7 @@
 					<textarea data-template>
 						### dev.js, dataops & devops
 
-						<img height="100" style="background-color:white;border : 0;box-shadow: none;" data-src="img/matchID-logo.svg" alt="matchID">
+						<img height="100" style="border : 0;box-shadow: none;" data-src="img/matchID-logo.svg" alt="matchID">
 
 						les prétextes et la génèse de
 						[deces.matchid.io](https://deces.matchid.io)
@@ -70,31 +89,30 @@
 					</textarea>
 				</section>
 
-				<section title="objectif">
-					<section data-markdown data-background-iframe="https://deces.matchid.io/">
+				<section title="contexte">
+					<section title="objectif" data-markdown>
 						<textarea data-template>
 							## L'objectif
 
-							Publier un moteur de recherche des personnes décédées
+							Publier un moteur de recherche des décès
 
-							<img width="100%" style="background-color:white;border : 0;box-shadow: none;" data-src="img/moteur_deces.png" alt="deces.matchid.io">
-
+							<img width="100%" style="border:0;box-shadow: none;" data-src="img/moteur_deces.png" alt="deces.matchid.io">
 						</textarea>
 					</section>
-					<section data-markdown>
+					<section title="opportunité" data-markdown>
 						<textarea data-template>
 							## L'opportunité
 
-							<div class="container">
+							<div class="container center">
 								<div class="col">
 									début 2017...<br/>
-									<img height="150px" style="background-color:white;border : 0;box-shadow: none;" data-src="img/logo_mi.png" alt="logo ministère de l'Intérieur">
+									<img height="150px" style="border : 0;box-shadow: none;" data-src="img/logo_mi.png" alt="logo ministère de l'Intérieur">
 									<br/>
 									<small>au "MI", le projet matchID réalise en POC un moteur de recherche des décès avec le fichier INSEE, alors fermé</small>
 								</div>
 								<div class="col">
 									... fin 2019<br/>
-									<img height="150px" style="background-color:white;border : 0;box-shadow: none;" data-src="img/logo_insee.svg" alt="logo Insee">
+									<img height="150px" style="border : 0;box-shadow: none;" data-src="img/logo_insee.svg" alt="logo Insee">
 									<br/>
 									<small>l'INSEE publie l'ensemble des 25 millions d'enregistrements de décès depuis 1970 <a href="https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees/)">data.gouv</a></small>
 								</div>
@@ -102,7 +120,7 @@
 
 						</textarea>
 					</section>
-					<section data-markdown>
+					<section titile="envies" data-markdown>
 						<textarea data-template>
 							## Les envies
 							- valoriser l'effort d'ouverture de l'INSEE
@@ -114,74 +132,75 @@
 					</section>
 				</section>
 
-				<section title="dataprep">
-						<section data-markdown data-background-iframe="https://deces.matchid.io/">
-							<textarea data-template>
-								## Data source
+				<section title="data sources">
+					<section title="objectif" data-markdown data-background-iframe="https://deces.matchid.io/">
+						<textarea data-template>
+							## Data sources
 
-								API data.gouv et stockage cloud S3
+							<ul>
+								<li>source INSEE</li>
+								<li>catalogue et APIs data.gouv</li>
+								<li>stocackge objet S3</li>
+							</ul>
+						</textarea>
+					</section>
+					<section title="donnees insee" data-markdown>
+						<textarea data-template>
+							## La source INSEE
 
-							</textarea>
-						</section>
-						<section data-markdown>
-							<textarea data-template>
-								## Les données INSEE
+							<small>
+								<ul>
+									<li>nom, prénom(s)</li>
+									<li>date/lieu de naissance/décès</li>
+									<li>n° d'acte de décès</li>
+									<br/>
+									<li>25 millions d'enregistrements</li>
+									<li>49 fichiers, 730Mo compressé</li>
+									<li>environ 620k décès/an aujourd'hui</li>
+									<br/>
+									<li><i>fixed width file</i> (champs fixes) </li>
+									<li><i>~ascii (sauf quelques lignes...) </li>
+								</ul>
+							</small>
+							<small><pre><code>
+DUCRET*MARIE ANTOINETTE/      21922010901004AMBERIEU-EN-BUGEY   19701210014216
+GRANGEON*ERIC JEAN REMY/      11969032901004AMBERIEU-EN-BUGEY   19700425693831059
+VELLET*PHILIPPE/              11970020101004AMBERIEU-EN-BUGEY   197002030100412
+PRESSAVIN*LYDIE/              21970040601004AMBERIEU-EN-BUGEY   197004060100433
+DOUAT*MARIE-SYLVIA MARTINE/   21970070801004AMBERIEU-EN-BUGEY   1970070801053457
+							</code></pre></small>
 
-								<small>
-									<ul>
-										<li>nom, prénom(s)</li>
-										<li>date/lieu de naissance/décès</li>
-										<li>n° d'acte de décès</li>
-										<br/>
-										<li>25 millions d'enregistrements</li>
-										<li>49 fichiers</li>
-										<li>environ 620k décès/an aujourd'hui</li>
-										<br/>
-										<li><i>fixed width file</i> (champs fixes) </li>
-										<li><i>~ascii (sauf quelques lignes...) </li>
-									</ul>
-								</small>
-								<small><pre><code>
-DUCRET*MARIE ANTOINETTE/    [...] 21922010901004AMBERIEU-EN-BUGEY [...] 19701210014216
-GRANGEON*ERIC JEAN REMY/    [...] 11969032901004AMBERIEU-BUGEY [...] 19700425693831059
-VELLET*PHILIPPE/            [...] 11970020101004AMBERIEU-EN-BUGEY [...] 197002030100412
-PRESSAVIN*LYDIE/            [...] 21970040601004AMBERIEU-EN-BUGEY [...] 197004060100433
-DOUAT*MARIE-SYLVIA MARTINE/ [...] 21970070801004AMBERIEU-EN-BUGEY [...] 1970070801053457
-								</code></pre></small>
+							🤮 🤮 🤮
 
-								🤮 🤮 🤮
+							<small><small>(merci quand même à l'INSEE : c'est bien moche mais très carré - et précieux !)</small></small>
 
-								<small><small>(merci quand même à l'INSEE : c'est bien moche mais très carré)</small></small>
-
-							</textarea>
-						</section>
-						<section data-markdown>
-							<textarea data-template>
-								## [DATA.GOUV](https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees)
-								<div class="container">
-										<div class="col">
-												<small>
-													data.gouv c'est une plateforme de publication de données ouvertes
-													- en quelques chiffres :
-												</small><br/>
-												<img style="background-color:white;border : 0;box-shadow: none;" data-src="img/data_gouv_chiffres.png" alt="chiffres data.gouv">
-												<br/>
-											</div>
-										<div class="col">
-											<small>on y retrouve les 49 fichiers INSEE, faciles d'accès, et quelques réutilisations</small>
-											<a href="https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees">
-												<img width="350px" style="background-color:white;border : 0;box-shadow: none;" data-src="img/data_gouv.png" alt="site data.gouv">
-											</a>
+						</textarea>
+					</section>
+					<section title="data.gouv" data-markdown>
+						<textarea data-template>
+							## Le catalogue [DATA.GOUV](https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees)
+							<div class="container center">
+									<div class="col">
+											<small>
+												data.gouv c'est une plateforme de publication de données ouvertes
+												- en quelques chiffres :
+											</small><br/>
+											<img style="border : 0;box-shadow: none;" data-src="img/data_gouv_chiffres.png" alt="chiffres data.gouv">
+											<br/>
 										</div>
+									<div class="col">
+										<small>on y retrouve les 49 fichiers INSEE, faciles d'accès, et quelques réutilisations</small>
+										<a href="https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees">
+											<img width="350px" style="border : 0;box-shadow: none;" data-src="img/data_gouv.png" alt="site data.gouv">
+										</a>
 									</div>
-							</textarea>
-						</section>
-
-					<section data-markdown>
+								</div>
+						</textarea>
+					</section>
+					<section title="api data gouv" data-markdown>
 							<textarea data-template>
 								## [L'API data.gouv](https://doc.data.gouv.fr/api/reference/#/)
-								<small></small>
-								<div class="container higher">
+								<div class="container">
 									<div class="col left">
 										<small>
 											<p>
@@ -210,7 +229,7 @@ DOUAT*MARIE-SYLVIA MARTINE/ [...] 21970070801004AMBERIEU-EN-BUGEY [...] 19700708
 									<div class="col left">
 										<small>
 											<p>
-												Pour récupérer les 49 fichiers en shell :
+												Pour récupérer les 49 fichiers en shell et les compresser :
 											</p>
 										<small><code>
 												curl -s https://www.data.gouv.fr/api/1/datasets/fichier-des-personnes-decedees/ | jq '.resources[].url' |	sed 's/^/curl -s /;s:/\(deces-.*\)":/\1" | gzip > \1.gz:' | sh
@@ -225,13 +244,13 @@ DOUAT*MARIE-SYLVIA MARTINE/ [...] 21970070801004AMBERIEU-EN-BUGEY [...] 19700708
 										</p>
 										<p>
 											Pour les habitués de langage plus évolués Python ou Node, la récupération
-											d'une API Rest est aisée.
+											ne sort pas des habitudes.
 										</p>
 									</small>
 								</div>
 							</textarea>
-						</section>
 					</section>
+
 				</section>
 
 			</div>
