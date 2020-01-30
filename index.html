@@ -89,7 +89,7 @@
 					</textarea>
 				</section>
 
-				<section title="contexte">
+				<section title="contexte" data-markdown>
 					<section title="objectif" data-markdown>
 						<textarea data-template>
 							## L'objectif
@@ -379,7 +379,7 @@ DOUAT*MARIE-SYLVIA MARTINE/   21970070801004AMBERIEU-EN-BUGEY   1970070801053457
 										<p>
 											A noter notamment :
 											<ul>
-												<li>Les options de chiffrement, nombreuses chez AWS (arrive Q1 2020 chez Scaleway</li>
+												<li>Les options de chiffrement, nombreuses chez AWS (arrive Q1 2020 chez Scaleway)</li>
 												<li>La réplication de bucket</li>
 												<li>La gestion de tokens temporaires, scopés qui peut sécuriser l'automatisation (possible
 													dans Swift d'OpenStack ou AWS
@@ -410,6 +410,55 @@ DOUAT*MARIE-SYLVIA MARTINE/   21970070801004AMBERIEU-EN-BUGEY   1970070801053457
 						</textarea>
 					</section>
 				</section>
+
+				<section title="dataops avec matchID">
+						<section title="dataops" data-markdown>
+							<textarea data-template>
+								## Dataops
+
+								avec
+
+								<img height="100px" style="border:0;box-shadow: none;" data-src="img/matchID-logo.svg" alt="matchid logo">
+							</textarea>
+						</section>
+						<section title="why matchID" data-markdown>
+							<textarea data-template>
+								## Pourquoi matchID
+								<small class="left">
+									<p>
+										<a href="https://www.matchid.io/">matchID</a> a été créé initialement pour ouvrir
+										à d'autres administration les travaux de <i>data matching</i> réalisés initialement
+										en POC avec Dataiku 🦄
+									</p>
+									<p>
+										Nous avons approfondi la notion de <b>recettes simplifiées et interactives</b>,
+										qui accélèrent le travail de dataprep, en ajoutant les appels imbriqués
+										et favorisant gestion de version via Gitlab ou un Github. Pour une meilleure
+										<b>collaboration entre dev et data</b>.
+									</p>
+									<p>
+										La data du projet est donc réalisée avec matchID, et le code est sur
+										<a href="https://github.com/matchID-project/personnes-decedees_search">Github</a>.
+									</p>
+									<p>
+										Pour visualiser les recettes du projet:
+									</p>
+								</small>
+								<pre><code>
+git clone https://github.com/matchID-project/personnes-decedees_search
+cd personnes-decedees_search
+make dev FILES_TO_PROCESS=deces-1970.txt.gz
+								</code></pre>
+								<small>
+									<p>
+										matchID se lance, un peu de patience, rendez-vous
+										<a target="blank" href="http://localhost:8081/matchID/projects/personnes-decedees_search/datasets/personnes-decedees_src">ici sur votre navigateur</a>.
+									</p>
+								</small>
+							</textarea>
+						</section>
+
+					</section>
 
 			</div>
 		</div>
