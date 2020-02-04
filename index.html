@@ -28,6 +28,9 @@
 			.center {
 				align-items: center;
 			}
+			.top {
+				align-items: top;
+			}
 			.higher,
 			.higher-48 {
 				margin-top:-48px!important;
@@ -184,8 +187,9 @@
 						</textarea>
 					</section>
 				</section>
-				<section>
-					<section title="retex" data-markdown>
+
+				<section title="retex chapters">
+					<section title="retex chapters" data-markdown>
 						<textarea data-template>
 							## Replay tech
 							au menu
@@ -508,7 +512,7 @@ DOUAT*MARIE-SYLVIA MARTINE/   21970070801004AMBERIEU-EN-BUGEY   1970070801053457
 								## Pourquoi matchID
 								<small class="left">
 									<p>
-										<a href="https://www.matchid.io/">matchID</a> a été créé initialement pour ouvrir
+										<a href="https://www.matchid.io/" target="_blank">matchID</a> a été créé initialement pour ouvrir
 										à d'autres administration les travaux de <i>data matching</i> réalisés initialement
 										en POC avec Dataiku 🦄
 									</p>
@@ -520,7 +524,7 @@ DOUAT*MARIE-SYLVIA MARTINE/   21970070801004AMBERIEU-EN-BUGEY   1970070801053457
 									</p>
 									<p>
 										La data du projet est donc réalisée avec matchID, et le code est sur
-										<a href="https://github.com/matchID-project/deces-dataprep">Github</a>.
+										<a href="https://github.com/matchID-project/deces-dataprep" target="_blank">Github</a>.
 									</p>
 									<p>
 										Pour visualiser les recettes du projet:
@@ -534,7 +538,7 @@ make dev FILES_TO_PROCESS=deces-1970.txt.gz
 								<small>
 									<p>
 										matchID se lance, un peu de patience, rendez-vous
-										<a target="blank" href="http://localhost:8081/matchID/projects/personnes-decedees_search/datasets/personnes-decedees_src">ici sur votre navigateur</a>.
+										<a target="blank" href="http://localhost:8081/matchID/projects/deces-dataprep/datasets/deces_src">ici sur votre navigateur</a>.
 									</p>
 								</small>
 							</textarea>
@@ -542,7 +546,7 @@ make dev FILES_TO_PROCESS=deces-1970.txt.gz
 						<section title="source INSEE" data-markdown>
 								<textarea data-template>
 									## DONNEES INSEE sur matchID
-									<a target="blank" href="http://localhost:8081/matchID/projects/personnes-decedees_search/datasets/personnes-decedees_src">
+									<a target="blank" href="http://localhost:8081/matchID/projects/deces-dataprep/datasets/deces_src">
 									<img width="100%" style="border:0;box-shadow: none;" data-src="img/matchID-fwf.png" alt="matchid source"></a>
 									<small>
 										Quelques points à noter:
@@ -567,7 +571,7 @@ make dev FILES_TO_PROCESS=deces-1970.txt.gz
 												<li>l'historique de commune est utilisée pour les variantes de libellés de communes</li>
 											</ul>
 										</small>
-									<a class="higher-24" target="_blank" href="http://localhost:8081/matchID/projects/personnes-decedees_search/recipes/dataprep_personnes-dedecees_search">
+									<a class="higher-24" target="_blank" href="http://localhost:8081/matchID/projects/deces-dataprep/recipes/deces_dataprep">
 									<img width="100%" style="border:0;box-shadow: none;" data-src="img/matchID-dataprep.png" alt="matchid datapre"></a>
 
 									<small class="left">
@@ -579,7 +583,7 @@ make dev FILES_TO_PROCESS=deces-1970.txt.gz
 						<section title="indexation" data-markdown>
 								<textarea data-template>
 									## Indexation Elasticsearch
-									<a target="_blank" href="http://localhost:8081/matchID/projects/personnes-decedees_search/datasets/personnes-decedees_index">
+									<a target="_blank" href="http://localhost:8081/matchID/projects/deces-dataprep/datasets/deces_index">
 									<img width="100%" style="border:0;box-shadow: none;" data-src="img/matchID-index.png" alt="matchid index"></a>
 									<small class="higher-24"><small>Cliquez sur l'image pour visualiser les données</small></small>
 
