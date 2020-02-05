@@ -22,6 +22,14 @@
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 		<style>
+
+			.zoom-75 .slide-background-content iframe {
+				min-width:200%!important;
+				min-height:200%!important;
+				zoom: 0.5;
+				-moz-transform: scale(0.5);
+				-moz-transform-origin: 0 0;
+			}
 			.container {
 				display: flex;
 			}
@@ -903,6 +911,11 @@ make dev FILES_TO_PROCESS=deces-1970.txt.gz
 							</small>
 							<img height="400px" style="border:0;box-shadow: none;" data-src="img/svelte-bandwith-savings.svg" alt="bandwidth savings">
 						</textarea>
+					</section>
+					<section title="Svelte CO2" class="zoom-75" data-background-iframe="https://www.websitecarbon.com/website/deces-matchid-io/">
+						<h2 style="color:white">Svelte est écolo</h2>
+						<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
 					</section>
 					<section title="Svelte +/-" data-markdown>
 						<textarea data-template>
