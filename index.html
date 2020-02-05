@@ -1127,6 +1127,61 @@ make dev FILES_TO_PROCESS=deces-1970.txt.gz
 									- en mobilité les scores de 80% sont déjà très bons</small>
 							</textarea>
 					</section>
+					<section title="Optims 1/2" data-markdown>
+							<textarea data-template>
+								### Optimisations 1/2
+								<small>
+									<b>Premature optimization is the root of all evil (Donald Knuth, 1974)</b><br/>
+									Ou avant de prendre des médocs, vérifiez que vous êtes malade (cf outils supra)
+								</small>
+								<div class="container">
+									<div class="col left">
+										<small>
+											<p>
+												Deux stats (à googliser pour les sources):
+												<ul>
+													<li>
+														57% des utilisateurs abandonnent la consultation d'un site mettant
+															plus de 3 secondes à charger
+													</li>
+													<li>
+														80% ne reviennent pas sur le site
+													</li>
+												</ul>
+											</p>
+											<p>
+												La vitesse est donc primordiale
+											</p>
+											<p>Mais c'est un jeu d'effets visuels !
+												<ul>
+													<li>On n'optimise que le premier visuel de téléchargement</li>
+													<li>Le reste du site non visuel est reporté de façon asynchrone</li>
+												</ul>
+											</p>
+										</small>
+									</div>
+									<div class="col left">
+										<small>
+											<p>
+												Images, icones et fontes:
+												<ul>
+													<li>privilégier vectoriel pour les logos</li>
+													<li>photos: recompressez le jpg (e.g convert sous linux)</li>
+													<li>on reporte le chargement de ce qui ne tient pas sur le premier écran (lazy load)</li>
+													<li>évitez la démultiplication des fontes</li>
+													<li>une pas charger tout Font Awesome, mais icone par icone</li>
+												</ul>
+											</p>
+											<p> Attention aux "nouveaux formats" (jpeg2000 & co).
+												Chrome/Safari/Firefox = 3 formats.
+												L'absence de standard nécessite une lib js lourde qui runine l'optimisation.
+												</ul>
+											</p>
+										</small>
+									</div>
+								</div>
+							</textarea>
+					</section>
 
 				</section>
 				<section title="*.OPS">
