@@ -1182,7 +1182,55 @@ make dev FILES_TO_PROCESS=deces-1970.txt.gz
 								</div>
 							</textarea>
 					</section>
-
+					<section title="Optims 2/2" data-markdown>
+							<textarea data-template>
+								### Optimisations 2/2
+								<div class="container higher-24">
+									<div class="col left">
+										<small>
+											<p>												<p>
+												CSS:
+												<ul class="higher-24">
+													<li>
+														ne chargez pas tout Bootstrap ou Bulma (la version minifiée de Bulma fait 300k,
+														29k sont utiles pour deces.matchid.io.
+													</li>
+													<li>
+														Il existes des outils et sites en ligne pour nettoyer les css, eg. <a target="_blank" href="https://purifycss.online/">PurifyCSS</a>
+														aussi intégrable à la compilation. Ils sont imparfaits (n'analysent pas votre js).
+													</li>
+													<li>
+														L'artisanat CSS est votre ami. Lisez des <a target="_blanck" href="https://www.sitepoint.com/optimizing-css-performance/">préco</a>.
+													</li>
+												</ul>
+											</p>
+										</small>
+									</div>
+									<div class="col left">
+										<small>
+											<p>
+												JS:
+												<ul class="higher-24">
+													<li>ne pas charger de grosse lib complète (type $loadash), appeler les sous-modules</li>
+													<li>bien configurer son webpack ou rollup pour la segmentation en chunks.js</li>
+													<li>polyfills: n'utilisez que le minimum, abandonnez la forte rétrocompatibilité (exit IE11 en 2020)</li>
+													<li>utilisez Svelte 😊</li>
+													<li>Avec Vue.js la cli 3 permet des analyses des libs js lourdes</li>
+											</ul>
+										</p>
+									</small>
+								</div>
+							</div>
+							<small>
+								Réseau:
+								<ul>
+									<li>évitez les multiples redirections</li>
+									<li>réduisez la latence avec un CDN type Cloudflare</li>
+									<li>utilisez une politique de cache > 4h sur les contenus statiques</li>
+								</ul>
+							</small>
+						</textarea>
+					</section>
 				</section>
 				<section title="*.OPS">
 					<section title="sommaire OPS" data-markdown>
