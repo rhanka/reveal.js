@@ -1335,6 +1335,55 @@ make dev FILES_TO_PROCESS=deces-1970.txt.gz
 							</div>
 						</textarea>
 					</section>
+					<section title="réalité" data-markdown>
+						<textarea data-template>
+							## Réalité
+
+							<div class="container higher">
+								<div class="col left">
+									<small>
+										<p>
+											Le contexte :
+											<ul>
+												<li>je suis seul, c'est un side project</li>
+												<li>priorité à un service "public" gratuit</li>
+												<li>livrer vite pour voir le public</li>
+												<li>limiter les coûts récurrents et dépendances</li>
+											</ul>
+										</p>
+										<p>
+											Dans l'esprit, pour les suites, soit je peux assumer les coûts,
+											soit le service me dépasse, et je fais en
+											sorte qu'il soit incubable par l'Administration
+										</p>
+										<p>
+											La première verision est donc déployée à la mano sur un hôte, que ce soit
+											pour du dev, du build ou du run, avec une simple automation make et docker.
+										</p>
+									</small>
+								</div>
+								<div class="col left">
+									<small>
+										<p>
+											Je réutilise alors un hôte existant (tutoriel de <a target="_blank" href="https://www.matchid.io">matchID</a> et hôte historique
+											de tests <a target="_blank" href="https://histovec.interieur.gouv.fr">Histovec</a>
+												et <a target="_blank" href="www.previsecours.fr">Previsecours</a> pour le lancement.
+											Coût 0, mais j'avais un récurrent de 24€/mois pour ces projets historique, que j'ai fermé depuis.
+										</p>
+										<p>
+											Autour j'avais déjà mes petits éléments de séparation de flux (bastion, proxy,
+											load balancer), petits serveurs à 3€/mois.
+										</p>
+										<p>
+											Pour être secure, je préfère mettre en place un CDN, n'ayant
+											aucune idée du volume d'audience (et les service anti-DDoS associés aux CDN
+											ont tendance à me rassurer).
+										</p>
+									</small>
+								</div>
+							</div>
+						</textarea>
+					</section>
 
 				</section>
 
