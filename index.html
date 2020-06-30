@@ -141,9 +141,9 @@
 							- évaluer plusieurs IaaS de la French Tech
 						</textarea>
 					</section>
-					<section title="plan de marche" data-markdown>
+					<section title="démarrage" data-markdown>
 							<textarea data-template>
-								## Le plan de marche
+								### Le démarrage
 								<small class="higher-24">
 									20 décembre
 									<div class="container center">
@@ -180,16 +180,29 @@
 								</small>
 							</textarea>
 					</section>
-					<section title="ou en est on" data-markdown>
+					<section title="1 mois" data-markdown>
 						<textarea data-template>
-							## Après 1 mois
+							### Après 1 mois
 							<img height="400px" style="border:0;box-shadow: none;" data-src="img/stats-users-janvier.png" alt="deces.matchid.io">
 							<small>
 								<ul>
-									<li>un traffic stabilisé à ~1100 utilisateurs / jour</li>
-									<li>un coût récurrent de serveurs ~ 15€/mois</li>
+									<li>~1100 utilisateurs / jour (généalogistes)</li>
+									<li>un coût récurrent de serveurs ~ 30€/mois</li>
 									<li>un service scalable en un clic</li>
-									<li>des évolutions fonctionnelles à venir</li>
+								</ul>
+							</small>
+						</textarea>
+					</section>
+					<section title="a 6 mois" data-markdown>
+						<textarea data-template>
+							### Après 6 mois
+							<a href="https://deces.matchid.io"><img height="400px" style="border:0;box-shadow: none;" data-src="img/deces_geo.png" alt="deces.matchid.io"></a>
+							<small>
+								<ul>
+									<li>un traffic stabilisé à ~1500 utilisateurs / jour</li>
+									<li>une API co-designée avec le ministère de l'Intérieur</li>
+									<li>fonctions avancées de recherche (critère, geo)</li>
+									<li>recherche "par lot" (e.g droit à l'oubli - fichier clients des médecins)</li>
 								</ul>
 							</small>
 						</textarea>
@@ -1422,7 +1435,47 @@ make dev FILES_TO_PROCESS=deces-1970.txt.gz
 								</div>
 							</textarea>
 					</section>
-
+					<section title="Ouverture du service" data-markdown>
+						<textarea data-template>
+							## Première prod
+							<div class="container higher">
+								<div class="col left">
+									<small>
+										<p>
+											Début janvier:
+											<ul>
+												<li>découverture du public: les généalogistes</li>
+												<li>concurrence: marché payant (type Filae) avec des services complémentaires (sources d'archives, ...)</li>
+												<li><b>1200</b> utilisateurs/jours</li>
+											</ul>
+										</p>
+										<p>
+											Un peu de jonglage ssh pour quelques fixes nécessaires: changement de version
+											(rédemarrage docker/nginx: 15s d'indispo), et bascules elasticsearch (plusieurs
+											dataprep nécessaires).
+										</p>
+									</small>
+								</div>
+								<div class="col left">
+									<small>
+										<p>
+											Le public n'est pas celui envisagé, les généalogistes on besoin de faire des enquêtes,
+											certaines sont impossibles avec la recherche simple (les Jean Martin, ...).
+										</p>
+										<p>
+											Je suis dans l'impasse pour des recherches avancées avec Search-UI, je n'ai plus assez
+											de temps pour découvrir Rancher...
+										</p>
+										<p>
+											Je fais ce qu'il faut pour un service régulier
+											à coût minimisé et sans temps à consacrer à la prod: CI, CD en blue/green, et plusieurs
+											IaaS pour la réversibilité.
+										</p>
+									</small>
+								</div>
+							</div>
+						</textarea>
+					</section>
 				</section>
 
 			</div>
